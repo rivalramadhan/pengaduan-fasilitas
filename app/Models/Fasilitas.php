@@ -12,6 +12,5 @@ class Fasilitas extends Model
     
     protected $fillable = [
         'nama',
-        
     ];
 }
