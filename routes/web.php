@@ -16,5 +16,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/users', [ManageUserController::class, 'store'])->name('manage-users.store');
     Route::get('/fasilitas', [ManageFasilitasController::class, 'index'])->name('manage-fasilitas.index');
 
-
 });
