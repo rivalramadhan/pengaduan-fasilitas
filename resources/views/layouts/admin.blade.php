@@ -12,7 +12,9 @@
     <div class="flex h-screen">
         
         {{-- Memasukkan file sidebar --}}
-        @include('layouts.partials._admin-sidebar')
+        @include('components.sidebar')
+
+        {{-- Memasukkan file header --}}
 
         {{-- Konten Utama --}}
         <div class="flex-1 flex flex-col overflow-hidden">
