@@ -13,14 +13,14 @@
         </a>
 
         {{-- Link Manage Pengaduan --}}
-        <a href="{{ route('admin.manage-pengaduan.index') }}" 
+        <a href="" 
            class="flex items-center p-2 mb-2 rounded-md text-gray-400 hover:bg-gray-700">
             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             <span>Manage Pengaduan</span>
         </a>
 
         {{-- (BARU) Link Manage Fasilitas --}}
-        <a href="#" 
+        <a href="{{ route('admin.manage-fasilitas.index') }}" 
            class="flex items-center p-2 mb-2 rounded-md text-gray-400 hover:bg-gray-700">
             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
             <span>Manage Fasilitas</span>
