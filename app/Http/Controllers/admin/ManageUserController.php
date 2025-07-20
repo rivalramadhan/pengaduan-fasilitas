@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\User;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ManageUserController extends Controller
 {
     public function index()
     {
         $users = User::all();
-        return view('admin.manage_users.index', compact('users'));
+    return view('admin.manageusers.index', compact('users'));
     }
 
     public function create()
