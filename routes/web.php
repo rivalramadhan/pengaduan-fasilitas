@@ -17,3 +17,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/fasilitas', [ManageFasilitasController::class, 'index'])->name('manage-fasilitas.index');
 
 });
+
