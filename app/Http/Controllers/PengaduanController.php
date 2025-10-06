@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Pengaduan; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Fasilitas;
 
 class PengaduanController extends Controller
 {
