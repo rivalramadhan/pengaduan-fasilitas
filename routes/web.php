@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ManageFasilitasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ManageUserController;
 use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 Route::get('/', function () {
@@ -19,12 +20,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 });
 
+Route::get('/login', [LoginController::class, 'create'])->name('login');
+
+Route::post('/login', [LoginController::class, 'store']);
+
+Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+
 Route::get('/pengaduan/create', [PengaduanController::class, 'create'])
+    ->middleware('auth')
      ->name('pengaduan.create');
 
 Route::post('/pengaduan/store', [PengaduanController::class, 'store'])
+     ->middleware('auth')
      ->name('pengaduan.store');
 
 Route::get('/laporan-saya', [PengaduanController::class, 'index'])
+     ->middleware('auth')
      ->name('laporan.index');
 

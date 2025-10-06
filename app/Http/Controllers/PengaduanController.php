@@ -13,7 +13,7 @@ class PengaduanController extends Controller
 {
     public function index()
     {
-        $user = User::find(1);
+        $user = Auth::user();
         $daftar_pengaduan = $user->pengaduans()->latest()->get();
 
         return view('warga.pengaduan.index', ['daftar_pengaduan' => $daftar_pengaduan]);
@@ -38,8 +38,7 @@ class PengaduanController extends Controller
         $path = $request->file('lampiran')->store('public/lampiran');
 
         Pengaduan::create([
-            // 'user_id' => Auth::id(),
-            'user_id' => 1,
+            'user_id' => Auth::id(),
             'judul' => $validatedData['judul'],
             'isi' => $validatedData['isi'],
             'tanggal_kejadian' => $validatedData['tanggal_kejadian'],
