@@ -21,7 +21,6 @@ class PengaduanController extends Controller
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
             'isi' => 'required|string',
-            'lokasi' => 'required|string|max:255',
             'tanggal_kejadian' => 'required|date',
             'fasilitas_id' => 'required|exists:fasilitas,id',
             'lampiran' => 'required|file|image|max:2048',
@@ -30,15 +29,15 @@ class PengaduanController extends Controller
         $path = $request->file('lampiran')->store('public/lampiran');
 
         Pengaduan::create([
-            'user_id' => Auth::id(),
+            // 'user_id' => Auth::id(),
+            'user_id' => 1,
             'judul' => $validatedData['judul'],
             'isi' => $validatedData['isi'],
-            'lokasi' => $validatedData['lokasi'],
             'tanggal_kejadian' => $validatedData['tanggal_kejadian'],
             'fasilitas_id' => $validatedData['fasilitas_id'],
             'lampiran' => $path,
         ]);
 
-        return redirect('/home')->with('success', 'Laporan Anda berhasil dikirim!');
+        return redirect('/pengaduan/create')->with('success', 'Laporan Anda berhasil dikirim!');
     }
 }

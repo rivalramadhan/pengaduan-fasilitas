@@ -17,9 +17,7 @@ return new class extends Migration
             $table->foreignId('fasilitas_id')->constrained('fasilitas')->onDelete('cascade');
             $table->string('judul');
             $table->text('isi');
-            $table->string('lokasi');
             $table->date('tanggal_kejadian');
-            $table->string('subjek');
             $table->string('lampiran');
             $table->enum('status', ['dikirim', 'diproses', 'selesai'])->default('dikirim');
             $table->timestamps();
