@@ -11,6 +11,6 @@ class Fasilitas extends Model
 
     
     protected $fillable = [
-        'nama',
+        'nama_fasilitas',
     ];
 }
