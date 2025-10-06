@@ -13,7 +13,8 @@ class PengaduanController extends Controller
     public function create()
     {
         $daftar_fasilitas = Fasilitas::all();
-        return view('warga.pengaduan.create', ['daftar_fasilitas' => $daftar_fasilitas]);
+        $daftar_pengaduan = Auth::user()->pengaduans()->latest()->get();
+        return view('warga.pengaduan.create', ['daftar_fasilitas' => $daftar_fasilitas, 'daftar_pengaduan' => $daftar_pengaduan]);
     }
 
     public function store(Request $request)
