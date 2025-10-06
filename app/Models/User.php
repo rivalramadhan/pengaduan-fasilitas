@@ -31,4 +31,10 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    public function pengaduans()
+    {
+        return $this->hasMany(Pengaduan::class);
+    }
 }
+
