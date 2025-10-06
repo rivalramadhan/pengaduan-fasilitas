@@ -7,14 +7,22 @@ use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Fasilitas;
+use App\Models\User;
 
 class PengaduanController extends Controller
 {
+    public function index()
+    {
+        $user = User::find(1);
+        $daftar_pengaduan = $user->pengaduans()->latest()->get();
+
+        return view('warga.pengaduan.index', ['daftar_pengaduan' => $daftar_pengaduan]);
+    }
+
     public function create()
     {
         $daftar_fasilitas = Fasilitas::all();
-        $daftar_pengaduan = Auth::user()->pengaduans()->latest()->get();
-        return view('warga.pengaduan.create', ['daftar_fasilitas' => $daftar_fasilitas, 'daftar_pengaduan' => $daftar_pengaduan]);
+        return view('warga.pengaduan.create', ['daftar_fasilitas' => $daftar_fasilitas]);
     }
 
     public function store(Request $request)

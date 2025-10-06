@@ -25,3 +25,6 @@ Route::get('/pengaduan/create', [PengaduanController::class, 'create'])
 Route::post('/pengaduan/store', [PengaduanController::class, 'store'])
      ->name('pengaduan.store');
 
+Route::get('/laporan-saya', [PengaduanController::class, 'index'])
+     ->name('laporan.index');
+
