@@ -9,7 +9,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            /* background-image: url("{{ asset('img/bg2.png') }}"); */
+            background-image: url("{{ asset('img/bg2.png') }}");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
