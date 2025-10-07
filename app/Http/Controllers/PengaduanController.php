@@ -46,6 +46,6 @@ class PengaduanController extends Controller
             'lampiran' => $path,
         ]);
 
-        return redirect('/pengaduan/create')->with('success', 'Laporan Anda berhasil dikirim!');
+        return redirect('/laporan-saya')->with('success', 'Laporan Anda berhasil dikirim!');
     }
 }
