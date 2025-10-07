@@ -1,24 +1,44 @@
 <style>
+    /* 1. Selector diubah menjadi 'body' (tag HTML), bukan '.body' (class) */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-image: url("{{ asset('img/bg.png') }}");
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        padding-top: 70px;
+
+        /* 2. Properti Flexbox untuk sticky footer ditambahkan */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    /* 3. Aturan untuk <main> agar mendorong footer ke bawah */
+    main {
+        flex-grow: 1;
+    }
+
     .footer {
         background-color: #E0E0E0;
         padding: 40px;
-        margin-top: 150px; /* Jarak dari konten di atasnya */
+        /* margin-top tidak lagi diperlukan karena flex-grow */
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap; /* Agar responsif di layar kecil */
-        gap: 20px; /* Jarak jika wrap */
+        flex-wrap: wrap;
+        gap: 20px;
     }
     .footer .social-icons {
         display: flex;
-        gap: 20px; /* Jarak antar ikon sosial media */
+        gap: 20px;
     }
     .footer .social-icons a {
         color: #333;
         transition: color 0.3s;
     }
     .footer .social-icons a:hover {
-        color: #080053; /* Warna saat hover */
+        color: #080053;
     }
     .footer .social-icons .icon {
         width: 28px;

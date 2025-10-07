@@ -1,14 +1,17 @@
 <style>
     .navbar {
         top: 0;
-        position: sticky;
+        left: 0; 
+        position: fixed;
+        width: 100%; 
         z-index: 1000;
         background-color: #080053;
         color: white;
-        padding: 15px 25px; /* Sedikit padding tambahan */
+        padding: 15px 25px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        box-sizing: border-box;
     }
     .navbar .left-section,
     .navbar .right-section,
@@ -16,16 +19,16 @@
     .navbar .profile {
         display: flex;
         align-items: center;
-        gap: 15px; /* Jarak antar item */
+        gap: 15px; 
     }
     .navbar a {
         color: white;
         text-decoration: none;
-        font-size: 1em; /* Ukuran font standar */
+        font-size: 1em; 
         font-weight: bold;
         display: flex;
         align-items: center;
-        gap: 8px; /* Jarak antara ikon dan teks */
+        gap: 8px; 
     }
     .nav-link:hover {
         opacity: 0.8;
@@ -45,20 +48,19 @@
         height: 30px;
         border-radius: 50%;
         background-color: white;
-        padding: 4px; /* Padding agar ikon tidak terlalu mepet */
-        box-sizing: border-box; /* Agar padding tidak menambah ukuran */
-        color: #080053; /* Warna ikon di dalam lingkaran */
+        padding: 4px; 
+        box-sizing: border-box; 
+        color: #080053; 
     }
 </style>
 
 <div class="navbar">
     <div class="left-section">
-        {{-- <a href="{{ route('home') }}" class="nav-link"> --}}
+        <a href="{{ route('laporan.index') }}" class="nav-link">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" />
             </svg>
         </a>
-        
         @auth
             {{-- <a href="{{ route('laporan.index') }}" class="nav-link"> --}}
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
