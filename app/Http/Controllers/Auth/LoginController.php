@@ -37,7 +37,7 @@ class LoginController extends Controller
                 return redirect()->intended('/admin/dashboard'); // Ganti jika perlu
             }
 
-            return redirect()->intended('/home'); // Redirect default untuk 'warga'
+            return redirect()->intended('/laporan-saya'); // Redirect default untuk 'warga'
         }
 
         // 4. Jika gagal, kembali ke form login dengan pesan error
