@@ -58,6 +58,10 @@
                     <dt>Fasilitas</dt>
                     <dd>{{ $laporan->fasilitas->nama_fasilitas }}</dd>
                 </div>
+                <div class="meta-item">
+                    <dt></dt>
+                    <dd>{{ $laporan->lokasi }}</dd>
+                </div>
             </div>
 
             <div class="report-content">
@@ -72,11 +76,11 @@
                 </div>
             </div>
 
-            {{-- <div class="response-card">
+            <div class="response-card">
                 <h3>Tanggapan Petugas:</h3>
                 <p>Terima kasih atas laporannya. Tim kami akan segera menindaklanjuti ke lokasi.</p>
                 <small>Ditanggapi oleh: Admin Desa pada 10 Oct 2025</small>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>

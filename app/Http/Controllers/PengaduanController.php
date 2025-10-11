@@ -35,7 +35,7 @@ class PengaduanController extends Controller
             'lampiran' => 'required|file|image|max:2048',
         ]);
 
-        $path = $request->file('lampiran')->store('public/lampiran');
+       $path = $request->file('lampiran')->store('lampiran', 'public');
 
         Pengaduan::create([
             'user_id' => Auth::id(),
