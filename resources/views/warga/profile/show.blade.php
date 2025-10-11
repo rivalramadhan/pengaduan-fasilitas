@@ -1,11 +1,11 @@
-@extends('layouts.warga')
+@extends('layouts.profile')
 @section('title', 'Profil Pengguna')
 
 @push('styles')
 <style>
     /* Style dari layout baru Anda */
     .profile-header {
-        background-image: url("{{ asset('img/bg.png') }}");
+        /* background-image: url("{{ asset('img/bg.png') }}"); */
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;

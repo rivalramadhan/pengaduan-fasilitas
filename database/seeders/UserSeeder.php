@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Contoh membuat user dengan role 'warga'
+    
         User::create([
             'nama' => 'Warga Tirtomoyo',
             'nik' => '1234567890123456', 
@@ -23,8 +23,7 @@ class UserSeeder extends Seeder
             'alamat' => 'Jl. Mawar No. 1, Desa Tirtomoyo',
             'role' => 'warga',
         ]);
-
-        // Contoh membuat user dengan role 'admin'
+    
         User::create([
             'nama' => 'Admin Desa',
             'nik' => '9876543210987654',

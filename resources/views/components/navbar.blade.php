@@ -6,7 +6,6 @@
     .navbar .icon { width: 24px; height: 24px; }
     .navbar .login, .navbar .signup { background-color: white; color: #0A0A46; padding: 8px 16px; border-radius: 20px; }
 
-    /* ========== STYLE BARU UNTUK DROPDOWN ========== */
     .dropdown {
         position: relative;
         display: inline-block;
@@ -33,16 +32,16 @@
         color: #080053;
     }
     .dropdown-menu {
-        display: none; /* Sembunyi secara default */
+        display: none; 
         position: absolute;
         right: 0;
-        top: 120%; /* Posisi di bawah tombol pemicu */
+        top: 120%; 
         background-color: white;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
         border-radius: 8px;
-        overflow: hidden; /* Agar border-radius bekerja */
+        overflow: hidden; 
     }
     .dropdown-menu a, .dropdown-menu .dropdown-logout-btn {
         color: black;
@@ -60,7 +59,7 @@
         background-color: #f1f1f1;
     }
     .dropdown-menu.show {
-        display: block; /* Tampilkan dropdown */
+        display: block; 
     }
     .dropdown-menu form { margin: 0; }
 </style>
