@@ -38,3 +38,6 @@ Route::get('/laporan-saya', [PengaduanController::class, 'index'])
      ->middleware('auth')
      ->name('laporan.index');
 
+Route::get('/laporan-saya/{id}', [PengaduanController::class, 'show'])
+    ->middleware('auth')
+    ->name('laporan.show');

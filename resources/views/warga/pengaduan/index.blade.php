@@ -54,7 +54,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="#" class="action-link">Detail</a>
+                            <a href="{{ route('laporan.show', $laporan->id) }}" class="action-link">Detail</a>
                         </td>
                     </tr>
                 @endforeach

@@ -48,4 +48,15 @@ class PengaduanController extends Controller
 
         return redirect('/laporan-saya')->with('success', 'Laporan Anda berhasil dikirim!');
     }
+
+    public function show($id)
+    {
+        $laporan = Pengaduan::with('fasilitas', 'user')->findOrFail($id);
+
+        if ($laporan->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('warga.pengaduan.show', ['laporan' => $laporan]);
+    }
 }
