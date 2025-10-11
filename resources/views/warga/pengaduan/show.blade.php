@@ -19,11 +19,29 @@
     .status-dikirim { background-color: #007bff; }
     .status-diproses { background-color: #ffc107; color: #333; }
     .status-selesai { background-color: #28a745; }
+    .btn-back {
+        display: inline-block;
+        margin-bottom: 25px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        padding: 8px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 20px;
+        transition: all 0.3s;
+        
+    }
+    .btn-back:hover {
+        background-color: #f8f9fa;
+        color: #212529;
+    }
 </style>
 @endpush
 
 @section('content')
 <div class="container">
+    <a href="{{ route('laporan.index') }}" class="btn-back">&larr; Kembali ke Daftar Laporan</a>
+
     <div class="card">
         <div class="card-header">
             <h1>{{ $laporan->judul }}</h1>
@@ -70,8 +88,8 @@
 
                 <h3>Lampiran:</h3>
                 <div class="report-attachment">
-                    <a href="{{ asset('storage/' . Str::after($laporan->lampiran, 'public/')) }}" target="_blank">
-                        <img src="{{ asset('storage/' . Str::after($laporan->lampiran, 'public/')) }}" alt="Lampiran Laporan">
+                    <a href="{{ asset('storage/' . Str::after($laporan->lampiran, 'public/')) }}" target="_blank" class="link-lampiran">
+                        Klik untuk melihat gambar lampiran
                     </a>
                 </div>
             </div>
