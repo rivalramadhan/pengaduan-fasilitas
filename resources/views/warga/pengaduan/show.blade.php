@@ -50,10 +50,6 @@
                     <dt>Tanggal Kejadian</dt>
                     <dd>{{ \Carbon\Carbon::parse($laporan->tanggal_kejadian)->format('d F Y') }}</dd>
                 </div>
-                <div class="meta-item">
-                    <dt>Lokasi</dt>
-                    <dd>{{ $laporan->lokasi }}</dd>
-                </div>
             </div>
 
             <div class="report-content">
