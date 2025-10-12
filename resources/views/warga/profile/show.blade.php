@@ -3,9 +3,9 @@
 
 @push('styles')
 <style>
-    /* Style dari layout baru Anda */
+    
     .profile-header {
-        /* background-image: url("{{ asset('img/bg.png') }}"); */
+        background-image: url("{{ asset('img/bg.png') }}");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -62,8 +62,8 @@
         </div>
         <div class="username">{{ $user->nama }}</div>
     </div>
-    <button class="logout-button" onclick="document.getElementById('logout-form').submit();">Keluar</button>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
+    {{-- <button class="logout-button" onclick="document.getElementById('logout-form').submit();">Keluar</button>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form> --}}
 </div>
 
 <div class="container">
