@@ -22,14 +22,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Izin untuk mengelola laporan (bisa diakses admin & petugas)
-        Gate::define('manage-reports', function (User $user) {
-            return in_array($user->role, ['admin', 'petugas']);
-        });
-
-        // Izin HANYA untuk mengelola master data (hanya bisa diakses admin)
-        Gate::define('manage-master-data', function (User $user) {
-            return $user->role === 'admin';
-        });
+     
     }
 }
