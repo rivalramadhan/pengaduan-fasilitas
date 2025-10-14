@@ -26,4 +26,9 @@ class Pengaduan extends Model
     {
         return $this->belongsTo(Fasilitas::class);
     }
+
+    public function tanggapans()
+    {
+        return $this->hasMany(Tanggapan::class);
+    }
 }

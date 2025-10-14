@@ -10,12 +10,15 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('tanggapans', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('tanggapans', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('pengaduan_id')->constrained('pengaduans')->onDelete('cascade');
+        $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+        $table->text('isi_tanggapan');
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
