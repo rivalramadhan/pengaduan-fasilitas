@@ -6,27 +6,26 @@ use App\Http\Controllers\Admin\ManageUserController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ManagePengaduanController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [ManageUserController::class, 'dashboard'])->name('dashboard');
+Route::get('/login', [LoginController::class, 'create'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [ManagePengaduanController::class, 'index'])->name('dashboard');
+    Route::get('/laporan/{pengaduan}', [ManagePengaduanController::class, 'show'])->name('laporan.show');
+    Route::put('/laporan/{pengaduan}', [ManagePengaduanController::class, 'update'])->name('laporan.update');
     Route::get('/users', [ManageUserController::class, 'index'])->name('manage-users.index');
     Route::get('/users/create', [ManageUserController::class, 'create'])->name('manage-users.create');
     Route::post('/users', [ManageUserController::class, 'store'])->name('manage-users.store');
     Route::get('/fasilitas', [ManageFasilitasController::class, 'index'])->name('manage-fasilitas.index');
-
 });
-
-Route::get('/login', [LoginController::class, 'create'])->name('login');
-
-Route::post('/login', [LoginController::class, 'store']);
-
-Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/pengaduan/create', [PengaduanController::class, 'create'])->name('pengaduan.create');
