@@ -1,44 +1,134 @@
 @extends('layouts.admin')
-@section('title', 'Manage Users')
-@section('header', 'Manage Users')
+
+@section('title', 'Kelola Pengguna')
+
+@push('styles')
+<style>
+    /* Menggunakan kembali style dari halaman dashboard untuk konsistensi */
+    .container { 
+        padding: 30px; 
+        max-width: 1200px; 
+        margin: auto;
+    }
+    .page-header { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px; 
+        border-bottom: 1px solid #e9ecef; 
+        padding-bottom: 15px; 
+    }
+    .page-header h1 {
+        color: #343a40; 
+        font-size: 2.2em; 
+        font-weight: 600;
+        margin: 0;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    /* Styling Tabel */
+    .table-wrapper {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+    .table-laporan {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table-laporan th, .table-laporan td {
+        padding: 18px 25px;
+        text-align: left;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .table-laporan th {
+        background-color: #eef2f7;
+        color: #495057;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+    .table-laporan tbody tr:last-child td { border-bottom: none; }
+    .table-laporan tbody tr:hover { background-color: #f2f6fc; }
+
+    /* Styling Badge untuk Role */
+    .role-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        font-weight: 700;
+        color: white;
+        text-transform: capitalize;
+    }
+    .role-admin { background-color: #dc3545; } /* Merah untuk Admin */
+    .role-warga { background-color: #17a2b8; } /* Biru kehijauan untuk Warga */
+
+    /* Styling untuk kolom Aksi */
+    .actions a {
+        margin-right: 15px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .action-edit { color: #007bff; }
+    .action-delete { color: #dc3545; }
+
+    .empty-state { text-align: center; padding: 40px; color: #6c757d; font-style: italic; }
+</style>
+@endpush
+
 @section('content')
-    <div class="bg-white shadow-md rounded-lg overflow-x-auto">
-        <table class="min-w-full leading-normal">
+<div class="container">
+    <div class="page-header">
+        <h1>Kelola Pengguna</h1>
+        <a href="#" class="btn-primary">+ Tambah User</a>
+    </div>
+    
+    <div class="table-wrapper">
+        <table class="table-laporan">
             <thead>
                 <tr>
-                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Name</th>
-                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">NIK</th>
-                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Password</th>
-                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">No Telp</th>
-                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Role</th>
-                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Actions</th>
+                    <th>Nama</th>
+                    <th>NIK</th>
+                    <th>No. Telepon</th>
+                    <th>Role</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($users as $user)
                     <tr>
-                        <td class="px-5 py-4 border-b border-gray-200 bg-white text-sm">{{ $user->nama }}</td>
-                        <td class="px-5 py-4 border-b border-gray-200 bg-white text-sm">{{ $user->nik }}</td>
-                        <td class="px-5 py-4 border-b border-gray-200 bg-white text-sm">{{ $user->password }}</td>
-                        <td class="px-5 py-4 border-b border-gray-200 bg-white text-sm">{{ $user->no_telp }}</td>
-                        <td class="px-5 py-4 border-b border-gray-200 bg-white text-sm">
-                            <span class="relative inline-block px-3 py-1 font-semibold leading-tight rounded-full
-                                @if($user->role == 'admin') text-red-900 bg-red-200 @elseif($user->role == 'petugas') text-green-900 bg-green-200 @else text-blue-900 bg-blue-200 @endif">
-                                {{ ucfirst($user->role) }}
+                        <td>{{ $user->nama }}</td>
+                        <td>{{ $user->nik }}</td>
+                        <td>{{ $user->no_telp ?? '-' }}</td>
+                        <td>
+                            <span class="role-badge role-{{ strtolower($user->role) }}">
+                                {{ $user->role }}
                             </span>
                         </td>
-                        <td class="px-5 py-4 border-b border-gray-200 bg-white text-sm">
-                            <a href="#" class="text-red-600 hover:text-indigo-900">delete</a>
+                        <td class="actions">
+                            <a href="#" class="action-edit">Edit</a>
+                            <a href="#" class="action-delete">Delete</a>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center py-10 border-b border-gray-200 bg-white text-sm">
-                            No users found.
-                        </td>
+                        <td colspan="5" class="empty-state">Belum ada data pengguna.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
     </div>
+</div>
 @endsection
