@@ -1,4 +1,4 @@
-@extends('layouts.warga')
+@extends('layouts.admin')
 @section('title', 'Dashboard Laporan')
 
 @push('styles')

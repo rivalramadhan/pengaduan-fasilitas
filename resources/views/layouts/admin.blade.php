@@ -1,37 +1,27 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Admin Panel') - {{ config('app.name') }}</title>
-
-    {{-- Memuat Aset CSS dan JS dari Vite --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Admin Dashboard')</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            background-color: #f8f9fa; /* Background abu-abu muda */
+        }
+    </style>
+    @stack('styles')
 </head>
-<body class="font-sans antialiased bg-gray-100">
-    <div class="flex h-screen">
-        
-        {{-- Memasukkan file sidebar --}}
-        @include('components.sidebar')
+<body>
+    
+    @include('components.admin-navbar')
 
-        {{-- Memasukkan file header --}}
+    <main>
+        @yield('content')
+    </main>
 
-        {{-- Konten Utama --}}
-        <div class="flex-1 flex flex-col overflow-hidden">
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
-                <div class="container mx-auto">
-                    
-                    <header class="mb-6">
-                        <h1 class="text-2xl font-semibold text-gray-800">
-                            @yield('header')
-                        </h1>
-                    </header>
-
-                    @yield('content')
-
-                </div>
-            </main>
-        </div>
-    </div>
+    @stack('scripts')
+    
 </body>
 </html>
