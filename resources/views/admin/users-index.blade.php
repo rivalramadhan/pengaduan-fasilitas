@@ -4,23 +4,28 @@
 
 @push('styles')
 <style>
-    /* Menggunakan kembali style dari halaman dashboard untuk konsistensi */
-    .container { 
-        padding: 30px; 
-        max-width: 1200px; 
+    .action-disabled {
+        color: #adb5bd;
+        font-style: italic;
+        font-weight: 600;
+        cursor: not-allowed;
+    }
+    .container {
+        padding: 30px;
+        max-width: 1200px;
         margin: auto;
     }
-    .page-header { 
+    .page-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 30px; 
-        border-bottom: 1px solid #e9ecef; 
-        padding-bottom: 15px; 
+        margin-bottom: 30px;
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 15px;
     }
     .page-header h1 {
-        color: #343a40; 
-        font-size: 2.2em; 
+        color: #343a40;
+        font-size: 2.2em;
         font-weight: 600;
         margin: 0;
     }
@@ -36,8 +41,6 @@
     .btn-primary:hover {
         background-color: #0056b3;
     }
-
-    /* Styling Tabel */
     .table-wrapper {
         background-color: #ffffff;
         border-radius: 10px;
@@ -48,7 +51,8 @@
         width: 100%;
         border-collapse: collapse;
     }
-    .table-laporan th, .table-laporan td {
+    .table-laporan th,
+    .table-laporan td {
         padding: 18px 25px;
         text-align: left;
         border-bottom: 1px solid #e9ecef;
@@ -60,10 +64,12 @@
         text-transform: uppercase;
         font-size: 0.9em;
     }
-    .table-laporan tbody tr:last-child td { border-bottom: none; }
-    .table-laporan tbody tr:hover { background-color: #f2f6fc; }
-
-    /* Styling Badge untuk Role */
+    .table-laporan tbody tr:last-child td {
+        border-bottom: none;
+    }
+    .table-laporan tbody tr:hover {
+        background-color: #f2f6fc;
+    }
     .role-badge {
         padding: 6px 12px;
         border-radius: 20px;
@@ -72,19 +78,40 @@
         color: white;
         text-transform: capitalize;
     }
-    .role-admin { background-color: #dc3545; } /* Merah untuk Admin */
-    .role-warga { background-color: #17a2b8; } /* Biru kehijauan untuk Warga */
-
-    /* Styling untuk kolom Aksi */
+    .role-admin {
+        background-color: #dc3545;
+    }
+    .role-warga {
+        background-color: #17a2b8;
+    }
     .actions a {
         margin-right: 15px;
         text-decoration: none;
         font-weight: 600;
     }
-    .action-edit { color: #007bff; }
-    .action-delete { color: #dc3545; }
-
-    .empty-state { text-align: center; padding: 40px; color: #6c757d; font-style: italic; }
+    .action-edit {
+        color: #007bff;
+    }
+    .action-delete {
+        background: none;
+        border: none;
+        padding: 0;
+        color: #dc3545;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1em;
+        font-family: Arial, sans-serif;
+    }
+    .action-delete:hover {
+        text-decoration: underline;
+        color: #a71d2a;
+    }
+    .empty-state {
+        text-align: center;
+        padding: 40px;
+        color: #6c757d;
+        font-style: italic;
+    }
 </style>
 @endpush
 
@@ -92,7 +119,7 @@
 <div class="container">
     <div class="page-header">
         <h1>Kelola Pengguna</h1>
-        <a href="#" class="btn-primary">+ Tambah User</a>
+        <a href="#" class="btn-primary">+ Tambah Warga</a>
     </div>
     
     <div class="table-wrapper">
@@ -118,8 +145,18 @@
                             </span>
                         </td>
                         <td class="actions">
-                            <a href="#" class="action-edit">Edit</a>
-                            <a href="#" class="action-delete">Delete</a>
+                            @if ($user->role == 'admin')
+                                <span class="action-disabled">Disabled</span>
+                            @else
+                                
+                                <form action="{{ route('admin.manage-users.destroy', $user->id) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="action-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                        Delete
+                                    </button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @empty

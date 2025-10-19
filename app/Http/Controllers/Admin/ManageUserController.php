@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class ManageUserController extends Controller
 {
@@ -33,5 +33,16 @@ class ManageUserController extends Controller
         User::create($validated);
 
         return redirect()->route('admin.manage_users.index')->with('success', 'User created successfully.');
+    }
+
+    public function destroy(User $user)
+    {
+        if ($user->role === 'admin') {
+            return back()->with('error', 'Akun admin tidak dapat dihapus!');
+        }
+
+        $user->delete();
+
+        return redirect()->route('admin.manage-users.index')->with('success', 'User berhasil dihapus.');
     }
 }
