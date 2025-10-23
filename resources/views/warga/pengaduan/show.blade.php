@@ -255,7 +255,7 @@
                         <a href="{{ asset('storage/' . Str::after($laporan->lampiran, 'public/')) }}" 
                            target="_blank" 
                            class="link-lampiran">
-                            📎 Lihat Lampiran
+                            Lihat Lampiran
                         </a>
                     </div>
                 @endif
