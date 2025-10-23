@@ -3,12 +3,11 @@
 
 @push('styles')
 <style>
-    /* General Container & Heading */
     .container { 
         padding: 30px; 
         max-width: 1200px; 
         margin: auto; 
-        background-color: #f8f9fa; /* Light background for the content area */
+        background-color: #f8f9fa;
     }
     .page-header { 
         margin-bottom: 30px; 
@@ -19,73 +18,69 @@
         padding-bottom: 15px; 
     }
 
-    /* Table Styling */
     .table-wrapper {
         background-color: #ffffff;
         border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
-        overflow: hidden; /* Ensures rounded corners apply to content */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
         margin-bottom: 30px;
     }
 
     .table-laporan {
         width: 100%;
-        border-collapse: collapse; /* Ensure cells share borders */
+        border-collapse: collapse;
     }
 
     .table-laporan th, 
     .table-laporan td {
-        padding: 18px 25px; /* Increased padding for better readability */
+        padding: 18px 25px;
         text-align: left;
-        border-bottom: 1px solid #e9ecef; /* Lighter border color */
+        border-bottom: 1px solid #e9ecef;
     }
 
     .table-laporan th {
-        background-color: #eef2f7; /* Slightly darker header background */
-        color: #495057; /* Darker text for headers */
-        font-weight: 600; /* Bolder headers */
-        text-transform: uppercase; /* Uppercase for a modern look */
+        background-color: #eef2f7;
+        color: #495057;
+        font-weight: 600;
+        text-transform: uppercase;
         font-size: 0.9em;
     }
 
     .table-laporan tbody tr:last-child td {
-        border-bottom: none; /* No border for the last row */
+        border-bottom: none;
     }
 
     .table-laporan tbody tr:hover {
-        background-color: #f2f6fc; /* Subtle hover effect */
+        background-color: #f2f6fc;
     }
 
-    /* Status Badges */
     .status {
-        padding: 7px 14px; /* Slightly larger badge */
-        border-radius: 25px; /* More rounded */
+        padding: 7px 14px;
+        border-radius: 25px;
         font-size: 0.85em;
-        font-weight: 700; /* Bolder text for status */
+        font-weight: 700;
         color: white;
         text-transform: capitalize;
-        display: inline-block; /* Allows padding and margins */
-        line-height: 1; /* Aligns text vertically */
+        display: inline-block;
+        line-height: 1;
     }
 
-    .status-dikirim { background-color: #007bff; } /* Primary blue */
-    .status-diproses { background-color: #ffc107; color: #343a40; } /* Warning yellow (darker text for contrast) */
-    .status-selesai { background-color: #28a745; } /* Success green */
+    .status-dikirim { background-color: #007bff; }
+    .status-diproses { background-color: #ffc107; color: #343a40; }
+    .status-selesai { background-color: #28a745; }
     .status-ditolak { background-color: #6c757d; }
 
-    /* Action Link */
     .action-link {
-        color: #007bff; /* Primary blue for links */
+        color: #007bff;
         text-decoration: none;
         font-weight: 600;
-        transition: color 0.2s ease-in-out; /* Smooth transition for hover */
+        transition: color 0.2s ease-in-out;
     }
     .action-link:hover {
-        color: #0056b3; /* Darker blue on hover */
+        color: #0056b3;
         text-decoration: underline;
     }
 
-    /* Empty State */
     .empty-state {
         text-align: center;
         padding: 40px;
@@ -96,13 +91,11 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
 
-    /* Pagination */
     .pagination-wrapper {
         margin-top: 30px;
         display: flex;
-        justify-content: center; /* Center the pagination links */
+        justify-content: center;
     }
-    /* Basic pagination styling for Laravel's default output */
     .pagination {
         display: flex;
         list-style: none;
@@ -158,7 +151,7 @@
                     <tr>
                         <td>{{ $laporan->judul }}</td>
                         <td>{{ $laporan->user->nama }}</td>
-                        <td>{{ $laporan->created_at->format('d M Y, H:i') }}</td> {{-- Menambahkan waktu --}}
+                        <td>{{ $laporan->created_at->format('d M Y, H:i') }}</td>
                         <td>
                             <span class="status status-{{ $laporan->status }}">{{ $laporan->status }}</span>
                         </td>
