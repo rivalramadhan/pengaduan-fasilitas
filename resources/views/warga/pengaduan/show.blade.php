@@ -168,6 +168,30 @@
         color: #666;
         font-size: 0.9em;
     }
+    .btn-perbaiki {
+        display: inline-block;
+        margin-top: 15px;
+        background-color: #007bff;
+        color: white !important; /* !important untuk menimpa warna link default */
+        padding: 10px 18px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .btn-perbaiki:hover {
+        background-color: #0056b3;
+    }
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 20px;
+        border-left: 5px solid #f5c6cb;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        font-weight: 500;
+    }
 
     @media (max-width: 768px) {
         .container {

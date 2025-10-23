@@ -88,10 +88,10 @@
             </div>
             <button type="submit" class="submit-btn"><img src="{{ asset('img/masuk.png') }}"></button>
         </form>
-        <p class="register-text">
+        {{-- <p class="register-text">
             Belum punya akun? 
-            {{-- <a href="{{ route('register') }}">Daftar</a> --}}
-        </p>
+            <a href="{{ route('register') }}">Daftar</a>
+        </p> --}}
     </div>
 </div>
 @endsection

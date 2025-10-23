@@ -168,4 +168,44 @@
         </table>
     </div>
 </div>
+<div id="userModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Tambah Pengguna Baru</h2>
+            <span class="close-button">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form action="{{ route('admin.manage-users.store') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap *</label>
+                    <input type="text" name="nama" value="{{ old('nama') }}" required>
+                    @error('nama') <div class="alert-danger">{{ $message }}</div> @enderror
+                </div>
+                <div class="form-group">
+                    <label for="nik">NIK *</label>
+                    <input type="text" name="nik" value="{{ old('nik') }}" required>
+                    @error('nik') <div class="alert-danger">{{ $message }}</div> @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" name="password" required>
+                    @error('password') <div class="alert-danger">{{ $message }}</div> @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password_confirmation">Konfirmasi Password *</label>
+                    <input type="password" name="password_confirmation" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role *</label>
+                    <select name="role" required>
+                        <option value="warga" {{ old('role') == 'warga' ? 'selected' : '' }}>Warga</option>
+                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Simpan Pengguna</button>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
