@@ -201,6 +201,12 @@
         </header>
         
         <div class="card-body">
+            @if ($laporan->status === 'ditolak')
+        <div class="alert alert-danger" role="alert">
+            Laporan Anda ditolak. Silakan perbaiki dan kirim ulang.
+            <a href="{{ route('laporan.edit', $laporan->id) }}" class="btn-perbaiki">Perbaiki Laporan</a>
+        </div>
+    @endif
             <section class="meta-info">
                 <div class="meta-item">
                     <dt>Status Laporan</dt>

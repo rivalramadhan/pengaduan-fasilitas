@@ -33,7 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/pengaduan/store', [PengaduanController::class, 'store'])->name('pengaduan.store');
     Route::get('/laporan-saya', [PengaduanController::class, 'index'])->name('laporan.index');
     Route::get('/laporan-saya/{id}', [PengaduanController::class, 'show'])->name('laporan.show');
-   
+    Route::get('/laporan/{pengaduan}/edit', [PengaduanController::class, 'edit'])->name('laporan.edit');
+    Route::put('/laporan/{pengaduan}', [PengaduanController::class, 'update'])->name('laporan.update');
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
