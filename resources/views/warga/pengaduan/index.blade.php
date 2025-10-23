@@ -12,6 +12,7 @@
     .status-dikirim { background-color: #007bff; }
     .status-diproses { background-color: #ffc107; color: #333; }
     .status-selesai { background-color: #28a745; }
+    .status-ditolak { background-color: #6c757d; }
     .action-link { color: #007bff; text-decoration: none; font-weight: bold; }
     .empty-history { text-align: center; padding: 50px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 </style>
@@ -45,14 +46,16 @@
                         <td>{{ $laporan->judul }}</td>
                         <td>{{ $laporan->created_at->format('d M Y') }}</td>
                         <td>
-                            @if($laporan->status == 'dikirim')
-                                <span class="status status-dikirim">Dikirim</span>
-                            @elseif($laporan->status == 'diproses')
-                                <span class="status status-diproses">Diproses</span>
-                            @else
-                                <span class="status status-selesai">Selesai</span>
-                            @endif
-                        </td>
+    @if($laporan->status == 'dikirim')
+        <span class="status status-dikirim">Dikirim</span>
+    @elseif($laporan->status == 'diproses')
+        <span class="status status-diproses">Diproses</span>
+    @elseif($laporan->status == 'selesai')
+        <span class="status status-selesai">Selesai</span>
+    @elseif($laporan->status == 'ditolak')
+        <span class="status status-ditolak">Ditolak</span>
+    @endif
+</td>
                         <td>
                             <a href="{{ route('laporan.show', $laporan->id) }}" class="action-link">Detail</a>
                         </td>
