@@ -14,7 +14,7 @@
         display: inline-block;
         margin-bottom: 25px;
         padding: 10px 20px;
-        background-color: #6c757d;
+        /* background-color: #6c757d; */
         color: white;
         text-decoration: none;
         border-radius: 5px;
@@ -23,7 +23,7 @@
     }
 
     .btn-back:hover {
-        background-color: #5a6268;
+        /* background-color: #5a6268; */
         color: white;
         text-decoration: none;
     }
@@ -246,7 +246,7 @@
                     <dd>{{ $laporan->fasilitas->nama_fasilitas }}</dd>
                 </div>
                 <div class="meta-item">
-                    <dt>Lokasi</dt>
+                    <dt></dt>
                     <dd>{{ $laporan->lokasi }}</dd>
                 </div>
             </section>

@@ -12,7 +12,7 @@
     .status-dikirim { background-color: #007bff; }
     .status-diproses { background-color: #ffc107; color: #333; }
     .status-selesai { background-color: #28a745; }
-    .status-ditolak { background-color: #6c757d; }
+    .status-ditolak { background-color: #dc3545; }
     .action-link { color: #007bff; text-decoration: none; font-weight: bold; }
     .empty-history { text-align: center; padding: 50px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 </style>
