@@ -10,6 +10,8 @@ class LoginController extends Controller
 {
     /**
      * Menampilkan halaman form login.
+     *
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -18,29 +20,29 @@ class LoginController extends Controller
 
     /**
      * Menangani upaya autentikasi.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        // 1. Validasi input
+    
         $credentials = $request->validate([
             'nik' => ['required', 'string', 'size:16'],
             'password' => ['required', 'string'],
         ]);
 
-        // 2. Coba lakukan login
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // 3. Jika berhasil, arahkan berdasarkan role
             $user = Auth::user();
             if ($user->role === 'admin' || $user->role === 'petugas') {
-                return redirect()->intended('/admin/dashboard'); // Ganti jika perlu
+                return redirect()->intended('/admin/dashboard');
             }
 
-            return redirect()->intended('/laporan-saya'); // Redirect default untuk 'warga'
+            return redirect()->intended('/laporan-saya');
         }
 
-        // 4. Jika gagal, kembali ke form login dengan pesan error
         return back()->withErrors([
             'nik' => 'NIK atau Password yang Anda masukkan salah.',
         ])->onlyInput('nik');
@@ -48,6 +50,9 @@ class LoginController extends Controller
 
     /**
      * Menangani proses logout.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request)
     {
