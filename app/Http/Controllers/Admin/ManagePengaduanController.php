@@ -27,7 +27,7 @@ class ManagePengaduanController extends Controller
     public function update(Request $request, Pengaduan $pengaduan)
     {
         $request->validate([
-            'status' => 'required|in:dikirim,diproses,selesai',
+            'status' => 'required|in:dikirim,diproses,selesai,ditolak',
             'isi_tanggapan' => 'nullable|string|min:5',
         ]);
 

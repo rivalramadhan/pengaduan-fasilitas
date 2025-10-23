@@ -116,14 +116,15 @@
                 <div class="meta-item">
                     <dt>Status Laporan</dt>
                     <dd>
-                        @if($laporan->status == 'dikirim')
-                            <span class="status status-dikirim">Dikirim</span>
-                        @elseif($laporan->status == 'diproses')
-                            <span class="status status-diproses">Diproses</span>
-                        @else
-                            <span class="status status-selesai">Selesai</span>
-                        @endif
-                    </dd>
+    @if($laporan->status == 'dikirim')
+        <span class="status status-dikirim">Dikirim</span>
+    @elseif($laporan->status == 'diproses')
+        <span class="status status-diproses">Diproses</span>
+    @elseif($laporan->status == 'selesai')
+        <span class="status status-selesai">Selesai</span>
+    @elseif($laporan->status == 'ditolak')
+        <span class="status status-ditolak">Ditolak</span> @endif
+</dd>
                 </div>
                 <div class="meta-item">
                     <dt>Tanggal Dilaporkan</dt>

@@ -71,6 +71,7 @@
     .status-dikirim { background-color: #007bff; } /* Primary blue */
     .status-diproses { background-color: #ffc107; color: #343a40; } /* Warning yellow (darker text for contrast) */
     .status-selesai { background-color: #28a745; } /* Success green */
+    .status-ditolak { background-color: #6c757d; }
 
     /* Action Link */
     .action-link {

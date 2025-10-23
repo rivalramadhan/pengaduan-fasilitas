@@ -67,6 +67,7 @@
                     <option value="dikirim" @if($laporan->status == 'dikirim') selected @endif>Dikirim</option>
                     <option value="diproses" @if($laporan->status == 'diproses') selected @endif>Diproses</option>
                     <option value="selesai" @if($laporan->status == 'selesai') selected @endif>Selesai</option>
+                    <option value="ditolak" @if($laporan->status == 'ditolak') selected @endif>Ditolak</option>
                 </select>
             </div>
             <div class="form-group">
