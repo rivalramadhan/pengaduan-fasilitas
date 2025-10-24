@@ -44,7 +44,7 @@
 <div class="container">
     <div class="page-header">
         <h1>Kelola Pengguna</h1>
-        <button id="addUserBtn" class="btn-primary">+ Tambah User</button>
+        <button id="addUserBtn" class="btn-primary">+ Tambah Warga</button>
     </div>
     
     <div class="table-wrapper">
@@ -71,8 +71,8 @@
                             @if ($user->role == 'admin')
                                 <span class="action-disabled">Disabled</span>
                             @else
-                                <a href="#" class="action-edit">Edit</a>
-                                <form action="{{ route('admin.manage-users.destroy', $user->id) }}" method="POST" style="display: inline-block;">
+                                {{-- <a href="#" class="action-edit">Edit</a>
+                                <form action="{{ route('admin.manage-users.destroy', $user->id) }}" method="POST" style="display: inline-block;"> --}}
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="action-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">Delete</button>
