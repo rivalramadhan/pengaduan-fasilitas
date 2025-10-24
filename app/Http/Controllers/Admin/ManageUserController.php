@@ -27,7 +27,7 @@ class ManageUserController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'no_telp' => 'required|string|max:15',
             'alamat' => 'required|string|max:255',
-            'role' => 'required|string|in:user,admin',
+            'role' => 'required|string|in:warga,admin',
         ]);
 
         User::create($validated);
