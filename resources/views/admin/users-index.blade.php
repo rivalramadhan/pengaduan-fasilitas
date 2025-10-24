@@ -98,34 +98,40 @@
         </div>
         <div class="modal-body">
             <form action="{{ route('admin.manage-users.store') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="nama">Nama Lengkap *</label>
-                    <input type="text" name="nama" value="{{ old('nama') }}" required>
-                    @error('nama') <div class="alert-danger">{{ $message }}</div> @enderror
-                </div>
-                <div class="form-group">
-                    <label for="nik">NIK *</label>
-                    <input type="text" name="nik" value="{{ old('nik') }}" required>
-                    @error('nik') <div class="alert-danger">{{ $message }}</div> @enderror
-                </div>
-                <div class="form-group">
-                    <label for="password">Password *</label>
-                    <input type="password" name="password" required>
-                    @error('password') <div class="alert-danger">{{ $message }}</div> @enderror
-                </div>
-                <div class="form-group">
-                    <label for="password_confirmation">Konfirmasi Password *</label>
-                    <input type="password" name="password_confirmation" required>
-                </div>
-                <div class="form-group">
-                    <label for="role">Role *</label>
-                    <select name="role" required>
-                        <option value="warga" @if(old('role') == 'warga') selected @endif>Warga</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Simpan Pengguna</button>
-            </form>
+    @csrf
+    <div class="form-group">
+        <label for="nama">Nama Lengkap *</label>
+        <input type="text" name="nama" value="{{ old('nama') }}" required>
+        @error('nama') <div class="alert-danger">{{ $message }}</div> @enderror
+    </div>
+    <div class="form-group">
+        <label for="nik">NIK *</label>
+        <input type="text" name="nik" value="{{ old('nik') }}" required>
+        @error('nik') <div class="alert-danger">{{ $message }}</div> @enderror
+    </div>
+
+    <div class="form-group">
+        <label for="no_telp">No. Telepon (Opsional)</label>
+        <input type="text" name="no_telp" value="{{ old('no_telp') }}">
+        @error('no_telp') <div class="alert-danger">{{ $message }}</div> @enderror
+    </div>
+    <div class="form-group">
+        <label for="alamat">Alamat (Opsional)</label>
+        <input type="text" name="alamat" value="{{ old('alamat') }}">
+        @error('alamat') <div class="alert-danger">{{ $message }}</div> @enderror
+    </div>
+    <div class="form-group">
+        <label for="password">Password *</label>
+        <input type="password" name="password" required>
+        @error('password') <div class="alert-danger">{{ $message }}</div> @enderror
+    </div>
+    <div class="form-group">
+        <label for="password_confirmation">Konfirmasi Password *</label>
+        <input type="password" name="password_confirmation" required>
+    </div>
+<input type="hidden" name="role" value="warga">
+    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Simpan Pengguna</button>
+</form>
         </div>
     </div>
 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ManageUserController extends Controller
 {
@@ -30,9 +31,11 @@ class ManageUserController extends Controller
             'role' => 'required|string|in:warga,admin',
         ]);
 
+        $validated['password'] = Hash::make($validated['password']);
+
         User::create($validated);
 
-        return redirect()->route('admin.manage_users.index')->with('success', 'User created successfully.');
+        return redirect()->route('admin.manage-users.index')->with('success', 'User created successfully.');
     }
 
     public function destroy(User $user)
