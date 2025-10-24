@@ -71,8 +71,7 @@
                             @if ($user->role == 'admin')
                                 <span class="action-disabled">Disabled</span>
                             @else
-                                {{-- <a href="#" class="action-edit">Edit</a>
-                                <form action="{{ route('admin.manage-users.destroy', $user->id) }}" method="POST" style="display: inline-block;"> --}}
+                                <form action="{{ route('admin.manage-users.destroy', $user->id) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="action-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">Delete</button>
@@ -106,17 +105,17 @@
     </div>
     <div class="form-group">
         <label for="nik">NIK *</label>
-        <input type="text" name="nik" value="{{ old('nik') }}" required>
+        <input type="number" name="nik" value="{{ old('nik') }}" required>
         @error('nik') <div class="alert-danger">{{ $message }}</div> @enderror
     </div>
 
     <div class="form-group">
-        <label for="no_telp">No. Telepon (Opsional)</label>
-        <input type="text" name="no_telp" value="{{ old('no_telp') }}">
+        <label for="no_telp">No. Telepon</label>
+        <input type="number" name="no_telp" value="{{ old('no_telp') }}">
         @error('no_telp') <div class="alert-danger">{{ $message }}</div> @enderror
     </div>
     <div class="form-group">
-        <label for="alamat">Alamat (Opsional)</label>
+        <label for="alamat">Alamat</label>
         <input type="text" name="alamat" value="{{ old('alamat') }}">
         @error('alamat') <div class="alert-danger">{{ $message }}</div> @enderror
     </div>
