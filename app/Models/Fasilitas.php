@@ -13,4 +13,9 @@ class Fasilitas extends Model
     protected $fillable = [
         'nama_fasilitas',
     ];
+
+    public function pengaduans()
+    {
+        return $this->hasMany(Pengaduan::class);
+    }
 }

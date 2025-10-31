@@ -26,6 +26,8 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(
     Route::post('/users', [ManageUserController::class, 'store'])->name('manage-users.store');
     Route::delete('/users/{user}', [ManageUserController::class, 'destroy'])->name('manage-users.destroy');
     Route::get('/fasilitas', [ManageFasilitasController::class, 'index'])->name('manage-fasilitas.index');
+    Route::post('/fasilitas', [ManageFasilitasController::class, 'store'])->name('manage-fasilitas.store');
+    Route::delete('/fasilitas/{fasilitas}', [ManageFasilitasController::class, 'destroy'])->name('manage-fasilitas.destroy'); // <-- TAMBAHKAN INI
 });
 
 Route::middleware('auth')->group(function () {
