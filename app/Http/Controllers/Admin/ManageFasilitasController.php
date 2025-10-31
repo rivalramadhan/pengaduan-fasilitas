@@ -23,4 +23,11 @@ class ManageFasilitasController extends Controller
 
         return redirect()->route('admin.manage-fasilitas.index')->with('success', 'Fasilitas baru berhasil ditambahkan!');
     }
+
+    public function destroy(Fasilitas $fasilitas)
+    {
+        $fasilitas->delete();
+
+        return redirect()->route('admin.manage-fasilitas.index')->with('success', 'Fasilitas berhasil dihapus!');
+    }
 }
