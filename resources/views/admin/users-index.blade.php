@@ -4,7 +4,6 @@
 
 @push('styles')
 <style>
-    /* Menggunakan kembali style dari halaman dashboard untuk konsistensi */
     .container { padding: 30px; max-width: 1200px; margin: auto; }
     .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #e9ecef; padding-bottom: 15px; }
     .page-header h1 { color: #343a40; font-size: 2.2em; font-weight: 600; margin: 0; }
