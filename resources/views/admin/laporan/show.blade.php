@@ -29,8 +29,9 @@
         <div class="meta-info">
             <div><dt>Tanggal Lapor</dt><dd>{{ $laporan->created_at->format('d F Y') }}</dd></div>
             <div><dt>Tanggal Kejadian</dt><dd>{{ \Carbon\Carbon::parse($laporan->tanggal_kejadian)->format('d F Y') }}</dd></div>
-            <div><dt>Lokasi</dt><dd>{{ $laporan->lokasi }}</dd></div>
             <div><dt>Fasilitas</dt><dd>{{ $laporan->fasilitas->nama_fasilitas ?? 'N/A' }}</dd></div>
+            <div><dt></dt><dd>{{ $laporan->lokasi }}</dd></div>
+            
         </div>
 
         <h3>Isi Laporan</h3>
