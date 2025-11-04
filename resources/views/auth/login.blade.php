@@ -25,6 +25,19 @@
         max-width: 500px;
         width: 100%;
     }
+    .form-title {
+        margin: 0 0 8px 0;
+        font-size: 1.6em;
+        color: #212529;
+        text-align: center;
+        font-weight: 700;
+    }
+    .form-instruction {
+        margin: 0 0 18px 0;
+        font-size: 0.95em;
+        color: #6c757d;
+        text-align: center;
+    }
     .form-group {
         margin-bottom: 15px;
         position: relative;
@@ -70,15 +83,16 @@
 
 @section('content')
 <div class="login-body">
-    {{-- <img src="{{ asset('img/masuk.png') }}" class="masuk-logo"> --}}
-
     <div class="form-container">
+        <h2 class="form-title">Masuk</h2>
+        <p class="form-instruction">Masukkan NIK (16 digit) dan kata sandi Anda. Jangan gunakan spasi pada password.</p>
+
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">
                 <input type="text" name="nik" placeholder="NIK *" autocomplete="off" value="{{ old('nik') }}" required>
             </div>
-            
+
             @error('nik')
                 <div class="alert-danger">{{ $message }}</div>
             @enderror
@@ -86,12 +100,8 @@
             <div class="form-group">
                 <input type="password" id="passwordInput" name="password" placeholder="Password *" required>
             </div>
-            <button type="submit" class="submit-btn"><img src="{{ asset('img/masuk.png') }}"></button>
+            <button type="submit" class="submit-btn"><img src="{{ asset('img/masuk.png') }}" alt="Masuk"></button>
         </form>
-        {{-- <p class="register-text">
-            Belum punya akun? 
-            <a href="{{ route('register') }}">Daftar</a>
-        </p> --}}
     </div>
 </div>
 @endsection
@@ -99,7 +109,6 @@
 @push('scripts')
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Mencegah spasi pada input password
         const passwordInput = document.getElementById("passwordInput");
         passwordInput.addEventListener("keydown", function(event) {
             if (event.code === "Space" || event.keyCode === 32) {
