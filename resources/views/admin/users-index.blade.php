@@ -26,7 +26,6 @@
     .empty-state { text-align: center; padding: 40px; color: #6c757d; font-style: italic; }
     .alert-danger { color: #e53e3e; font-size: 0.875em; margin-top: 5px; }
 
-    /* Style untuk Modal */
     .modal-overlay { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; }
     .modal-content { background-color: #fff; padding: 25px; border-radius: 10px; width: 90%; max-width: 600px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
     .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e9ecef; padding-bottom: 15px; margin-bottom: 20px; }
