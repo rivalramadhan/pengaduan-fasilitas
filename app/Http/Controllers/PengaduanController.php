@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
 use App\Models\Fasilitas;
+use App\Models\FotoPengaduan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,36 +27,47 @@ class PengaduanController extends Controller
         return view('warga.pengaduan.create', compact('daftar_fasilitas'));
     }
 
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'judul' => 'required|string|max:255',
-            'isi' => 'required|string',
-            'tanggal_kejadian' => 'required|date',
-            'lokasi' => 'required|string|max:255',
-            'fasilitas_id' => 'required|exists:fasilitas,id',
-            'lampiran' => 'required|file|image|max:2048',
-        ]);
+public function store(Request $request)
+{
 
-        $path = $request->file('lampiran')->store('lampiran', 'public');
+    $validatedData = $request->validate([
+        'judul' => 'required|string|max:255',
+        'isi' => 'required|string',
+        'tanggal_kejadian' => 'required|date',
+        'lokasi' => 'required|string|max:255',
+        'fasilitas_id' => 'required|exists:fasilitas,id',
+        'lampiran' => 'required|array', 
+        'lampiran.*' => 'file|image|max:2048', 
+    ]);
 
-        Pengaduan::create([
-            'user_id' => Auth::id(),
-            'judul' => $validatedData['judul'],
-            'isi' => $validatedData['isi'],
-            'tanggal_kejadian' => $validatedData['tanggal_kejadian'],
-            'lokasi' => $validatedData['lokasi'],
-            'fasilitas_id' => $validatedData['fasilitas_id'],
-            'lampiran' => $path,
-        ]);
+    $pengaduan = Pengaduan::create([
+        'user_id' => Auth::id(),
+        'judul' => $validatedData['judul'],
+        'isi' => $validatedData['isi'],
+        'tanggal_kejadian' => $validatedData['tanggal_kejadian'],
+        'lokasi' => $validatedData['lokasi'],
+        'fasilitas_id' => $validatedData['fasilitas_id'],
+    ]);
 
-        return redirect()->route('laporan.index')
-            ->with('success', 'Laporan Anda berhasil dikirim!');
+    
+    if ($request->hasFile('lampiran')) {
+        foreach ($request->file('lampiran') as $file) {
+        
+            $path = $file->store('lampiran', 'public');
+
+            FotoPengaduan::create([
+                'pengaduan_id' => $pengaduan->id,
+                'path' => $path,
+            ]);
+        }
     }
+
+    return redirect()->route('laporan.index')->with('success', 'Laporan Anda berhasil dikirim!');
+}
 
     public function show($id)
     {
-        $laporan = Pengaduan::with(['fasilitas', 'user', 'tanggapans.user'])->findOrFail($id);
+        $laporan = Pengaduan::with(['fotos', 'fasilitas', 'user', 'tanggapans.user'])->findOrFail($id);
 
         if ($laporan->user_id !== Auth::id()) {
             abort(403, 'Unauthorized action.');

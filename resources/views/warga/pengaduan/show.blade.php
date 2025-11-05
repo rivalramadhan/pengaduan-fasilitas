@@ -14,7 +14,6 @@
         display: inline-block;
         margin-bottom: 25px;
         padding: 10px 20px;
-        /* background-color: #6c757d; */
         color: white;
         text-decoration: none;
         border-radius: 5px;
@@ -23,7 +22,6 @@
     }
 
     .btn-back:hover {
-        /* background-color: #5a6268; */
         color: white;
         text-decoration: none;
     }
@@ -168,11 +166,12 @@
         color: #666;
         font-size: 0.9em;
     }
+
     .btn-perbaiki {
         display: inline-block;
         margin-top: 15px;
         background-color: #007bff;
-        color: white !important; /* !important untuk menimpa warna link default */
+        color: white !important;
         padding: 10px 18px;
         text-decoration: none;
         font-weight: bold;
@@ -180,9 +179,11 @@
         transition: background-color 0.3s;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
     .btn-perbaiki:hover {
         background-color: #0056b3;
     }
+
     .alert-danger {
         background-color: #f8d7da;
         color: #721c24;
@@ -214,23 +215,22 @@
 @section('content')
 <div class="container">
     <nav class="breadcrumb-nav">
-        <a href="{{ route('laporan.index') }}" class="btn-back">
-            &larr; Kembali ke Daftar Laporan
-        </a>
+        <a href="{{ route('laporan.index') }}" class="btn-back">&larr; Kembali ke Daftar Laporan</a>
     </nav>
 
     <main class="card">
         <header class="card-header">
             <h1>{{ $laporan->judul }}</h1>
         </header>
-        
+
         <div class="card-body">
             @if ($laporan->status === 'ditolak')
-        <div class="alert alert-danger" role="alert">
-            Laporan Anda ditolak. Silakan perbaiki dan kirim ulang.
-            <a href="{{ route('laporan.edit', $laporan->id) }}" class="btn-perbaiki">Perbaiki Laporan</a>
-        </div>
-    @endif
+                <div class="alert alert-danger" role="alert">
+                    Laporan Anda ditolak. Silakan perbaiki dan kirim ulang.
+                    <a href="{{ route('laporan.edit', $laporan->id) }}" class="btn-perbaiki">Perbaiki Laporan</a>
+                </div>
+            @endif
+
             <section class="meta-info">
                 <div class="meta-item">
                     <dt>Status Laporan</dt>
@@ -253,54 +253,61 @@
                         @endswitch
                     </dd>
                 </div>
+
                 <div class="meta-item">
                     <dt>Tanggal Dilaporkan</dt>
                     <dd>{{ $laporan->created_at->format('d F Y') }}</dd>
                 </div>
+
                 <div class="meta-item">
                     <dt>Tanggal Kejadian</dt>
                     <dd>{{ \Carbon\Carbon::parse($laporan->tanggal_kejadian)->format('d F Y') }}</dd>
                 </div>
+
                 <div class="meta-item">
                     <dt>Nama Pelapor</dt>
                     <dd>{{ $laporan->user->nama }}</dd>
                 </div>
+
                 <div class="meta-item">
                     <dt>Fasilitas</dt>
                     <dd>{{ $laporan->fasilitas->nama_fasilitas }}</dd>
                 </div>
+
                 <div class="meta-item">
                     <dt>Lokasi</dt>
                     <dd>{{ $laporan->lokasi }}</dd>
                 </div>
             </section>
 
-            <section class="report-content">
-                <h3>Isi Laporan:</h3>
+            <div class="report-content">
+                <h3>Isi Laporan Anda:</h3>
                 <p>{{ $laporan->isi }}</p>
 
-                @if($laporan->lampiran)
-                    <h3>Lampiran:</h3>
-                    <div class="report-attachment">
-                        <a href="{{ asset('storage/' . Str::after($laporan->lampiran, 'public/')) }}" 
-                           target="_blank" 
-                           class="link-lampiran">
-                            Lihat Lampiran
+                <h3 style="margin-top: 20px;">Lampiran:</h3>
+                <div class="report-attachment" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    @forelse ($laporan->fotos as $foto)
+                        <a href="{{ asset('storage/'. $foto->path) }}" target="_blank">
+                            <img src="{{ asset('storage/'. $foto->path) }}" 
+                                 alt="Lampiran {{ $loop->iteration }}" 
+                                 style="width: 150px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd;">
                         </a>
-                    </div>
-                @endif
-            </section>
+                    @empty
+                        <p style="color: #6c757d;">Tidak ada lampiran foto untuk laporan ini.</p>
+                    @endforelse
+                </div>
+            </div>
 
             @if($laporan->tanggapans->isNotEmpty())
                 <section class="response-card">
                     <h3>Tanggapan Petugas</h3>
-                    
+
                     @foreach($laporan->tanggapans as $tanggapan)
                         <article class="tanggapan-item">
                             <p>{{ $tanggapan->isi_tanggapan }}</p>
                             <footer>
                                 <small>
-                                    Ditanggapi oleh: <strong>{{ $tanggapan->user->nama }}</strong> 
+                                    Ditanggapi oleh: <strong>{{ $tanggapan->user->nama }}</strong>
                                     pada {{ $tanggapan->created_at->format('d F Y, H:i') }}
                                 </small>
                             </footer>
