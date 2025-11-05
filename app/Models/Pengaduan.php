@@ -15,7 +15,6 @@ class Pengaduan extends Model
         'isi',
         'tanggal_kejadian',
         'lokasi',
-        'lampiran',
         'status',
     ];
 
@@ -31,5 +30,10 @@ class Pengaduan extends Model
     public function tanggapans()
     {
         return $this->hasMany(Tanggapan::class);
+    }
+
+    public function fotos()
+    {
+        return $this->hasMany(FotoPengaduan::class);
     }
 }

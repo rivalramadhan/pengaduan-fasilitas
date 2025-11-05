@@ -61,10 +61,10 @@
                 @endforeach
             </select>
         </div>
-        <div class="form-group upload-section">
-            <label for="file-upload">UPLOAD LAMPIRAN (MAX 2MB)</label>
-            <input type="file" id="file-upload" name="lampiran" accept=".jpg, .jpeg, .png" required>
-            <p>Lampiran berupa foto dengan format jpg, jpeg, atau png.</p>
+        <div class="form-group">
+            <label for="lampiran">Lampiran (Bisa lebih dari satu) *</label>
+            <input type="file" id="lampiran" name="lampiran[]" accept=".jpg, .jpeg, .png" required multiple>
+            <small>Tahan Ctrl (atau Cmd di Mac) untuk memilih lebih dari satu foto.</small>
         </div>
         <div class="button-group">
             <a href="#">Panduan</a>
