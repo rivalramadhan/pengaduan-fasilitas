@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('judul');
             $table->text('isi');
             $table->date('tanggal_kejadian');
+            $table->string('lokasi');
             $table->string('lampiran');
             $table->enum('status', ['dikirim', 'diproses', 'selesai', 'ditolak'])->default('dikirim');
             $table->timestamps();

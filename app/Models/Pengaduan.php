@@ -14,6 +14,7 @@ class Pengaduan extends Model
         'judul',
         'isi',
         'tanggal_kejadian',
+        'lokasi',
         'lampiran',
         'status',
     ];

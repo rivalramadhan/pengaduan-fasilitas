@@ -49,6 +49,9 @@
             <input type="date" id="tanggalInput" name="tanggal_kejadian" value="{{ old('tanggal_kejadian') }}" required>
         </div>
         <div class="form-group">
+            <input type="text" name="lokasi" placeholder="Lokasi Kejadian *" autocomplete="off" value="{{ old('lokasi') }}" required>
+        </div>
+        <div class="form-group">
             <select name="fasilitas_id" required>
                 <option value="" disabled selected>Pilih Fasilitas *</option>
                 @foreach ($daftar_fasilitas as $fasilitas)
