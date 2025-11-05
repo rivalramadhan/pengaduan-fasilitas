@@ -32,6 +32,7 @@ class PengaduanController extends Controller
             'judul' => 'required|string|max:255',
             'isi' => 'required|string',
             'tanggal_kejadian' => 'required|date',
+            'lokasi' => 'required|string|max:255',
             'fasilitas_id' => 'required|exists:fasilitas,id',
             'lampiran' => 'required|file|image|max:2048',
         ]);
@@ -43,6 +44,7 @@ class PengaduanController extends Controller
             'judul' => $validatedData['judul'],
             'isi' => $validatedData['isi'],
             'tanggal_kejadian' => $validatedData['tanggal_kejadian'],
+            'lokasi' => $validatedData['lokasi'],
             'fasilitas_id' => $validatedData['fasilitas_id'],
             'lampiran' => $path,
         ]);
@@ -86,6 +88,7 @@ class PengaduanController extends Controller
             'judul' => 'required|string|max:255',
             'isi' => 'required|string',
             'tanggal_kejadian' => 'required|date',
+            'lokasi' => 'required|string|max:255',
             'fasilitas_id' => 'required|exists:fasilitas,id',
             'lampiran' => 'nullable|file|image|max:2048',
         ]);
