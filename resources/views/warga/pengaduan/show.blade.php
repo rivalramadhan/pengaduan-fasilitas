@@ -270,7 +270,7 @@
                     <dd>{{ $laporan->fasilitas->nama_fasilitas }}</dd>
                 </div>
                 <div class="meta-item">
-                    <dt></dt>
+                    <dt>Lokasi</dt>
                     <dd>{{ $laporan->lokasi }}</dd>
                 </div>
             </section>
