@@ -50,15 +50,24 @@
     </div>
 
     <div class="report-sidebar">
-        @if(session('success'))
-            <div class="alert-success">{{ session('success') }}</div>
-        @endif
         <h3>Lampiran</h3>
-        <a href="{{ asset('storage/' . Str::after($laporan->lampiran, 'public/')) }}" target="_blank">
-            <img src="{{ asset('storage/' . Str::after($laporan->lampiran, 'public/')) }}" alt="Lampiran Laporan">
-        </a>
-        <hr style="margin: 20px 0;">
-        <h3>Update Laporan</h3>
+    <div class="report-attachment-grid" style="display: flex; flex-wrap: wrap; gap: 10px; max-height: 400px; overflow-y: auto;">
+
+        {{-- Loop melalui semua foto di relasi 'fotos' --}}
+        @forelse ($laporan->fotos as $foto)
+            <a href="{{ asset('storage/' . $foto->path) }}" target="_blank">
+                <img src="{{ asset('storage/' . $foto->path) }}" 
+                     alt="Lampiran {{ $loop->iteration }}" 
+                     style="width: 100px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd;">
+            </a>
+        @empty
+            <p style="color: #6c757d;">Tidak ada lampiran foto.</p>
+        @endforelse
+
+    </div>
+    
+    <hr style="margin: 20px 0;">
+    <h3>Update Laporan</h3>
         <form action="{{ route('admin.laporan.update', $laporan->id) }}" method="POST">
             @csrf
             @method('PUT')

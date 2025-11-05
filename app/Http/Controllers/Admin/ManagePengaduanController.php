@@ -20,7 +20,7 @@ class ManagePengaduanController extends Controller
 
     public function show(Pengaduan $pengaduan)
     {
-        $pengaduan->load(['user', 'fasilitas', 'tanggapans.user']);
+        $pengaduan->load(['fotos', 'user', 'fasilitas', 'tanggapans.user']);
         return view('admin.laporan.show', ['laporan' => $pengaduan]);
     }
 
