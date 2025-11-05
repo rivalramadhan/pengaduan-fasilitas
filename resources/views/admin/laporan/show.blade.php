@@ -52,8 +52,6 @@
     <div class="report-sidebar">
         <h3>Lampiran</h3>
     <div class="report-attachment-grid" style="display: flex; flex-wrap: wrap; gap: 10px; max-height: 400px; overflow-y: auto;">
-
-        {{-- Loop melalui semua foto di relasi 'fotos' --}}
         @forelse ($laporan->fotos as $foto)
             <a href="{{ asset('storage/' . $foto->path) }}" target="_blank">
                 <img src="{{ asset('storage/' . $foto->path) }}" 
