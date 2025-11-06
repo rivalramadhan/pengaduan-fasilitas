@@ -9,17 +9,13 @@ use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
-    /**
-     * Menampilkan halaman profil pengguna.
-     */
+    
     public function show()
     {
         return view('warga.profile.show', ['user' => Auth::user()]);
     }
 
-    /**
-     * Memperbarui informasi profil pengguna.
-     */
+    
     public function update(Request $request)
     {
         $user = Auth::user();

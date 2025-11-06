@@ -46,7 +46,7 @@
         background-color: #2d3748;
         color: #fff;
     }
-    /* Style untuk link yang sedang aktif */
+    
     .sidebar .nav-link.active {
         background-color: #3A64A3; 
         color: #fff;
