@@ -5,7 +5,6 @@
 <style>
     .container { padding: 30px; max-width: 1200px; margin: auto; }
     
-    /* Style untuk Kartu Statistik (KPI) */
     .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
     .kpi-card { background-color: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; }
     .kpi-card .kpi-title { font-size: 0.9em; font-weight: 600; color: #6c757d; text-transform: uppercase; margin-bottom: 10px; }
@@ -13,10 +12,10 @@
     .kpi-card.new { background-color: #e6f7ff; border-color: #b3e0ff; }
     .kpi-card.new .kpi-value { color: #007bff; }
 
-    /* (BARU) Grid untuk tabel dan grafik */
+    
     .dashboard-grid {
         display: grid;
-        grid-template-columns: 1.5fr 1fr; /* Kolom tabel 1.5x lebih besar dari grafik */
+        grid-template-columns: 1.5fr 1fr; 
         gap: 30px;
     }
     .grid-card {
@@ -34,10 +33,9 @@
         border-bottom: 1px solid #e9ecef;
     }
     
-    /* (BARU) Container untuk chart agar responsif */
     .chart-container {
         padding: 25px;
-        height: 400px; /* Tentukan tinggi agar chart tidak terlalu besar */
+        height: 400px; 
         position: relative;
     }
 
@@ -52,6 +50,7 @@
 @endpush
 
 @section('content')
+
 <div class="container">
     <div class="kpi-grid">
         <div class="kpi-card new">
@@ -115,7 +114,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    // Ambil data dari Controller yang sudah diformat
+    
     const chartLabels = @json($chartLabels);
     const chartDataTotals = @json($chartTotals);
 
@@ -128,7 +127,7 @@
             datasets: [{
                 label: 'Jumlah Laporan',
                 data: chartDataTotals,
-                backgroundColor: 'rgba(58, 100, 163, 0.7)', // Warna primer kita
+                backgroundColor: 'rgba(58, 100, 163, 0.7)', 
                 borderColor: 'rgba(58, 100, 163, 1)',
                 borderWidth: 1
             }]
@@ -143,7 +142,7 @@
             },
             plugins: {
                 legend: {
-                    display: false // Sembunyikan legenda, karena judul sudah jelas
+                    display: false 
                 }
             }
         }

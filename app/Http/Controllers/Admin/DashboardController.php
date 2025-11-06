@@ -27,10 +27,10 @@ class DashboardController extends Controller
             
         
         $chartData = Pengaduan::join('fasilitas', 'pengaduans.fasilitas_id', '=', 'fasilitas.id')
-                        ->select('fasilitas.nama_fasilitas', DB::raw('count(pengaduans.id) as total'))
-                        ->groupBy('fasilitas.nama_fasilitas')
-                        ->orderBy('total', 'desc') 
-                        ->get();
+                ->select('fasilitas.nama_fasilitas as nama', DB::raw('count(pengaduans.id) as total'))
+                ->groupBy('fasilitas.nama_fasilitas')
+                ->orderBy('total', 'desc')
+                ->get();
 
         
         $chartLabels = $chartData->pluck('nama');

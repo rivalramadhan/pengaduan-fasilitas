@@ -5,8 +5,8 @@
         left: 0;
         height: 100vh;
         width: 240px;
-        background-color: #1a202c; /* Dark background */
-        color: #a0aec0; /* Light grey text */
+        background-color: #1a202c; 
+        color: #a0aec0; 
         padding: 20px;
         box-sizing: border-box;
     }
@@ -48,7 +48,7 @@
     }
     /* Style untuk link yang sedang aktif */
     .sidebar .nav-link.active {
-        background-color: #3A64A3; /* Primary blue color */
+        background-color: #3A64A3; 
         color: #fff;
     }
 </style>
