@@ -122,7 +122,7 @@
     const ctx = document.getElementById('fasilitasChart').getContext('2d');
     
     new Chart(ctx, {
-        type: 'bar', // Tipe grafik: batang
+        type: 'bar', 
         data: {
             labels: chartLabels,
             datasets: [{
