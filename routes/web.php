@@ -7,6 +7,7 @@ use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ManagePengaduanController;
+use App\Http\Controllers\Admin\DashboardController;
 
 
 Route::get('/', function () {
@@ -18,16 +19,22 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [ManagePengaduanController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // --- Manajemen Laporan ---
+    Route::get('/laporan', [ManagePengaduanController::class, 'index'])->name('laporan.index'); 
     Route::get('/laporan/{pengaduan}', [ManagePengaduanController::class, 'show'])->name('laporan.show');
     Route::put('/laporan/{pengaduan}', [ManagePengaduanController::class, 'update'])->name('laporan.update');
+
+    // --- Manajemen Master Data ---
     Route::get('/users', [ManageUserController::class, 'index'])->name('manage-users.index');
-    Route::get('/users/create', [ManageUserController::class, 'create'])->name('manage-users.create');
     Route::post('/users', [ManageUserController::class, 'store'])->name('manage-users.store');
     Route::delete('/users/{user}', [ManageUserController::class, 'destroy'])->name('manage-users.destroy');
+
+    // --- Manajemen Fasilitas ---
     Route::get('/fasilitas', [ManageFasilitasController::class, 'index'])->name('manage-fasilitas.index');
     Route::post('/fasilitas', [ManageFasilitasController::class, 'store'])->name('manage-fasilitas.store');
-    Route::delete('/fasilitas/{fasilitas}', [ManageFasilitasController::class, 'destroy'])->name('manage-fasilitas.destroy'); // <-- TAMBAHKAN INI
+    Route::delete('/fasilitas/{fasilitas}', [ManageFasilitasController::class, 'destroy'])->name('manage-fasilitas.destroy');
 });
 
 Route::middleware('auth')->group(function () {
